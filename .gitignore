@@ -1,0 +1,55 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.com
+*.class
+*.o
+
+# packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# folders #
+######################
+node_modules
+/temp/*
+/vendor/*
+/tmp
+*.idea
+config/.env
+
+# dependencies #
+######################
+
+
+# video and general files #
+######################
+*.mp4
+*.png
+*.pptx
