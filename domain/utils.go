@@ -5,16 +5,12 @@ import (
 	"runtime"
 )
 
-type Utils struct {}
+type Utils struct{}
 
 // RootPath returns the project root path
 func (u Utils) RootPath() string {
 	_, b, _, _ := runtime.Caller(0)
-	basepath := filepath.Dir(b)
-	root := filepath.Dir(basepath)
+	path := filepath.Dir(b)
+	root := filepath.Dir(path)
 	return root
-}
-
-func (u Utils) ResourcesPath() string {
-	return u.RootPath() + "/resources/"
 }
