@@ -16,6 +16,11 @@ func GetUserRepositories(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	username := vars["username"]
 
+	if len(username) == 0 {
+		handler.SendErrorResponse(w, fmt.Errorf("a username is expected"))
+		return
+	}
+
 	url := domain.GlobalConfig.GithubApiUrl + "/users/" + username + "/repos"
 	responseUrl, errGetReq := http.Get(url)
 	if errGetReq != nil {
