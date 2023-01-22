@@ -8,13 +8,20 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"reflect"
 	"shaw-and-partners-technical-challenge/domain"
 	"shaw-and-partners-technical-challenge/handler"
+	"strconv"
 )
 
 func GetUserDetails(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	username := vars["username"]
+
+	if len(username) == 0 {
+		handler.SendErrorResponse(w, fmt.Errorf("a username is expected"))
+		return
+	}
 
 	url := domain.GlobalConfig.GithubApiUrl + "/users/" + username
 	responseUrl, errGetReq := http.Get(url)
@@ -41,6 +48,20 @@ func GetUserDetails(w http.ResponseWriter, r *http.Request) {
 func GetAllUsers(w http.ResponseWriter, r *http.Request) {
 	query := r.URL.Query()
 	number := query.Get("since")
+
+	if len(number) == 0 {
+		handler.SendErrorResponse(w, fmt.Errorf("an id number is expected"))
+		return
+	}
+	numberConverted, errConvert := strconv.ParseUint(number, 10, 64)
+	if errConvert != nil {
+		handler.SendErrorResponse(w, fmt.Errorf("a valid id number is expected"))
+		return
+	}
+	if reflect.TypeOf(numberConverted).Kind() != reflect.Uint64 {
+		handler.SendErrorResponse(w, fmt.Errorf("an valid id number is expected "))
+		return
+	}
 
 	url := domain.GlobalConfig.GithubApiUrl + "/users?since=" + number
 	responseUrl, errGetReq := http.Get(url)
