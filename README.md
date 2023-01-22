@@ -64,6 +64,14 @@ This API is running on `port 8080` and so that all routes can be accessed locall
 ## Testing the application
 The endpoints described above can be accessed from the `insomnia` folder.
 
+## Tests
+The tests can be run by the following command:
+```
+cd _tests
+go test routes_test.go
+go test controllers_test.go
+```
+
 ## Go installation
 If you don't have Go installed on your machine, follow the steps below:
 ```
