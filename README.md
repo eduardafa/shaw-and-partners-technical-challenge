@@ -4,7 +4,7 @@
 # Shaw and Partners - Back-End Technical Challenge
 </div>
 
-This repository was created to present a technical test for the job position of BackEnd Golang programmer at Shaw and Partners.
+This repository was created to present a technical test for the job position of BackEnd Developer at Shaw and Partners.
 
 **OBSERVATION: The tests were not finished as I wanted. Some issues were found, but due to lack of time, they can't be resolved.**
 
